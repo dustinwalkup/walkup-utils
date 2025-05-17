@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["src", "rollup.config.js", "vitest.config.ts", ".eslintrc.cjs"],
+  "exclude": ["node_modules", "dist"]
+}
