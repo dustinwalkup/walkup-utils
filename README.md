@@ -12,6 +12,7 @@ Currently includes a resilient `tryCatch` helper for wrapping `Promise` calls in
 - [Installation](#installation)
 - [Usage](#usage)
 - [API Reference](#api-reference)
+  - [`debounce`](#debounce)
   - [`tryCatch`](#trycatch)
   - [Types](#types)
 - [Development](#development)
@@ -40,8 +41,15 @@ bun add @walkup/walkup-utils
 ## Usage
 
 ```ts
-import { tryCatch } from '@walkup/walkup-utils';
+import { debounce, tryCatch } from '@walkup/walkup-utils';
 
+// Debounce example:
+const onResize = debounce(() => {
+  console.log(`Resized to: ${window.innerWidth}×${window.innerHeight}`);
+}, 200);
+window.addEventListener('resize', onResize);
+
+// tryCatch example:
 async function main() {
   const result = await tryCatch(
     fetch('https://example.com').then((r) => r.json())
@@ -56,6 +64,23 @@ async function main() {
 ```
 
 ## API Reference
+
+### `debounce`
+
+Creates a debounced version of the provided function, delaying its invocation until after a specified wait time has elapsed since the last call.
+
+#### Parameters
+
+| Name   | Type     | Description                                                          |
+| :----- | :------- | :------------------------------------------------------------------- |
+| `fn`   | `F`      | The function to debounce; invoked with the last arguments after wait |
+| `wait` | `number` | Milliseconds to wait after the last call before invoking `fn`.       |
+
+#### Returns
+
+`(...args: Parameters<F>) => void` A debounced wrapper around fn that returns void.
+
+---
 
 ### `tryCatch`
 

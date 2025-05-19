@@ -21,6 +21,8 @@
     "url": "git+https://github.com/dustinwalkup/walkup-utils.git"
   },
   "keywords": [
+    "trycatch",
+    "debounce",
     "javascript",
     "typescript",
     "utils",
